@@ -1,0 +1,61 @@
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
+d = {'北京':
+         {'东城':{'东单':{'东单百货','东单游泳馆'},'王府井':{'东方新天地','王府井书店'}},
+          '西城':{'西单':{'西单大悦城','西单图书馆'},'地安门':{'北海','什刹海'}},
+          '海淀':{'中关村':{'鼎好电子城','海龙电子城'},'香山':{'香山公园','植物园'}},
+          '朝阳':{'望京':{'望京SOHO','朝来高科技产业园'},'建国门外':{'建外SOHO','国贸'}}}
+     }
+
+d1=d['北京'].keys()
+choice1=0
+choice2=0
+choice3=0
+
+while True:
+    if choice2 == 'q' or choice3 == 'q':
+        print('bye...')
+        break
+    for i in d1:
+        print(i)
+    choice1 = input('Please enter your choice [L1]>>: ')
+    if choice1 in d['北京']:
+        while True:
+            if  choice3 == 'q':
+                break
+            for i in d['北京'][choice1].keys():
+                print(i)
+            print('Return to the upper level please press \033[31m"b"\033[0m or press \033[31m"q"\033[0m to quit')
+            choice2 = input('Please enter your choice [L2]>>: ')
+            if choice2 in d['北京'][choice1]:
+                while True:
+                    for i in d['北京'][choice1][choice2]:
+                        print(i)
+                    print('\033[31;1m"This is the end，"\033[0m，\nReturn to the upper level please \
+                        press \033[31m"b"\033[0m or press \033[31m"q"\033[0m to quit')
+                    choice3 = input('Please enter your choice [L3]>>: ')
+                    if choice3 in d['北京'][choice1][choice2]:
+                       for i in d['北京'][choice1][choice2]:
+                           if i == choice3:
+                               print('\033[31m"Can no longer be down to the next level"\033[0m')
+                    elif choice3 == 'b':
+                        print('\033[32m"Successful...."\033[0m')
+                        break
+                    elif choice3 == 'q':
+                        break
+                    else:
+                        print('\033[31;1m"The enter is wrong"\033[0m')
+            elif choice2 == 'b':
+                print('\033[32m"Successful...."\033[0m')
+                break
+            elif choice2 == 'q':
+                break
+            else:
+                print('\033[31;1m"The enter is wrong"\033[0m')
+    elif choice1 == 'b':
+        print('\033[31m"This is top,Can not be up to the next level"\033[0m')
+    elif choice1 == 'q':
+        break
+    else:
+        print('\033[31;1m"The enter is wrong"\033[0m')
+
